@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+               {% for produit in produits %}
+                <div class="card my-5">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ produit.title }}</h5>
+                        <p class="card-text">{{ produit.id }} - Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <form action="/contact/modifier/{{ produit.id }}" method="post">
+                            <input type="submit" value="modifier" name="modifier" class="btn btn-dark">
+                        </form>
+                        <form action="/contact/delete/{{ produit.id }}" method="post">
+                            <input type="submit" value="supprimer" name="supprimer" class="btn btn-dark">
+                        </form>
+
+                    </div>
+                </div>
+                {% endfor %}
+                <a href="/Home/index"><button class="btn btn-dark btn-sm">Retour</button></a>
+                <a href="/Contact/ajouter"><button class="btn btn-dark btn-sm">Ajouter</button></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
